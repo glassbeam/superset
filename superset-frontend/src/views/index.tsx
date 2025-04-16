@@ -18,5 +18,6 @@
  */
 import ReactDOM from 'react-dom';
 import App from './App';
+import './assets/javascripts/custom.js';
 
 ReactDOM.render(<App />, document.getElementById('app'));
