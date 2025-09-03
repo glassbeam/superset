@@ -28,7 +28,7 @@ from celery.schedules import crontab
 from flask_caching.backends.filesystemcache import FileSystemCache
 
 logger = logging.getLogger()
-
+#SECRET_KEY="K2WGJjw0MVInRKvw14B4VAfpdo6hH9H5WAe92W0UQGWFVHOTwEHBoHmv"
 DATABASE_DIALECT = os.getenv("DATABASE_DIALECT")
 DATABASE_USER = os.getenv("DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
