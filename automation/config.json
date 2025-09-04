@@ -1,0 +1,34 @@
+{
+  "superset": {
+    "login_url": "https://devsupersetdocker.glassbeam.com/login/",
+    "dashboard_base_url": "https://devsupersetdocker.glassbeam.com/superset/dashboard/33/?",
+    "username": "admin",
+    "password": "admin"
+  },
+  "chrome": {
+    "driver_path": "/usr/local/bin/chromedriver",
+    "download_dir": "/tmp/superset_downloads"
+  },
+  "email": {
+    "sender": "donotreply@glassbeam.com",
+    "smtp_server": "smtp-server.ec2-east1.glassbeam.com",
+    "smtp_port": 587,
+    "cc": [""],
+    "bcc": [""],
+    "subject": "Daily CT Report"
+  },
+  "vertica": {
+    "host": "vertica-load-balancer-8eb4eb0b66502b68.elb.us-east-1.amazonaws.com",
+    "ums_host":"gbprod-ops-umsvert-nlb-c29897d271e625af.elb.us-east-1.amazonaws.com",
+    "port": 5433,
+    "user": "gbp",
+    "password": "dbadmin123",
+    "database": "glassbeam",
+    "schema_extract": "muhs_extracts",
+    "schema_subscribers": "medicalcommon",
+    "report_type": "Daily CT Report",
+    "mps": "muhs/muhs/prod",
+    "bc2r_schema":"muhs_muhs_prod_bc2r"
+  }
+}
+
