@@ -1,34 +1,35 @@
 {
   "superset": {
-    "login_url": "https://devsupersetdocker.glassbeam.com/login/",
-    "dashboard_base_url": "https://devsupersetdocker.glassbeam.com/superset/dashboard/33/?",
-    "username": "admin",
-    "password": "admin"
+    "login_url": SUPERSET_LOGIN_URL,
+    "ct_dashboard_base_url": CT_DASHBOARD_URL,
+    "mr_dashboard_base_url": MR_DASHBOARD_URL,
+    "cathlab_dashboard_base_url": CATHLAB_DASHBOARD_URL,
+    "username:USERNAME,
+    "password": PASSWORD
   },
   "chrome": {
-    "driver_path": "/usr/local/bin/chromedriver",
-    "download_dir": "/tmp/superset_downloads"
+    "driver_path": DRIVER_PATH,
+    "download_dir": DOWNLOADS_DIR,
+    "loginserver": GLASSBEAM_LOGIN_SERVER
   },
   "email": {
-    "sender": "donotreply@glassbeam.com",
-    "smtp_server": "smtp-server.ec2-east1.glassbeam.com",
-    "smtp_port": 587,
+    "sender": SENDER_EMAIL_ADDRESS,
+    "smtp_server": SMTP_SERVER,
+    "error_to":ERROR_EMAIL,
+    "smtp_port": SMTP_PORT,
     "cc": [""],
-    "bcc": [""],
-    "subject": "Daily CT Report"
+    "bcc": [""]
   },
   "vertica": {
-    "host": "vertica-load-balancer-8eb4eb0b66502b68.elb.us-east-1.amazonaws.com",
-    "ums_host":"gbprod-ops-umsvert-nlb-c29897d271e625af.elb.us-east-1.amazonaws.com",
-    "port": 5433,
-    "user": "gbp",
-    "password": "dbadmin123",
-    "database": "glassbeam",
-    "schema_extract": "muhs_extracts",
-    "schema_subscribers": "medicalcommon",
-    "report_type": "Daily CT Report",
-    "mps": "muhs/muhs/prod",
-    "bc2r_schema":"muhs_muhs_prod_bc2r"
+    "host": ANALYTICAL_VERTICA_HOST,
+    "ums_host": UMS_VERTICA_HOST,
+    "port": PORT,
+    "user": USERNAME,
+    "password": PASSWORD,
+    "database": DATABASE,
+    "ct_report_type": CT_REPORT,
+    "mr_report_type": MR_REPORT,
+    "cathlab_report_type": CATHLAB_REPORT
   }
 }
 
