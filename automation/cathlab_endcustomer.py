@@ -205,7 +205,7 @@ def process_email(driver, wait, serial_str, email, extracts_schema, bc2r_schema,
 def send_email_with_image(image_path, email_to, email_subject, mfr, prod, mps, cust_name):
     try:
         msg = MIMEMultipart("related")
-        msg["Subject"] = f"{email_subject}"
+        msg["Subject"] = f"Beta - {email_subject}"
         msg["From"] = EMAIL_SENDER
         msg["To"] = email_to
         msg["Cc"] = ", ".join(EMAIL_CC)
@@ -242,7 +242,7 @@ def send_email_with_image(image_path, email_to, email_subject, mfr, prod, mps, c
         (mps, cust_name, report_type, email_subject, email_sent_to, report_date, report_name)
         VALUES (%s, %s, %s, %s, %s, NOW(), %s)
         """
-        values = (mps, cust_name, "Daily Cathlab Report", email_subject, ",".join(all_recipients), "Daily cathlab Report")
+        values = (mps, cust_name, "Daily Cathlab Report", f"Beta - {email_subject}", ",".join(all_recipients), "Daily cathlab Report")
 
         try:
             with vertica_python.connect(**conn_info) as connection:

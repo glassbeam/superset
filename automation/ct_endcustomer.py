@@ -243,7 +243,7 @@ def send_email_with_image(image_path, email_to, email_subject, mfr, prod, mps, c
         (mps, cust_name, report_type, email_subject, email_sent_to, report_date, report_name)
         VALUES (%s, %s, %s, %s, %s, NOW(), %s)
         """
-        values = (mps, cust_name, "Daily CT Report", email_subject, ",".join(all_recipients), "Daily CT Report")
+        values = (mps, cust_name, "Daily CT Report",f"Beta - {email_subject}", ",".join(all_recipients), "Daily CT Report")
 
         try:
             with vertica_python.connect(**conn_info) as connection:
