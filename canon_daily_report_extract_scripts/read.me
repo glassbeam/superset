@@ -1,0 +1,4 @@
+Update the `config.json` file with  Vertica and SMTP details.
+Then, schedule the extract to run in the background using the following command:
+cd canon_daily_report_extract_scripts
+nohup python3 -u canon_dailyreport_extract.py > canon_dailyreport_extract.log 2>&1 &
