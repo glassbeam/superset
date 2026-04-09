@@ -24,6 +24,7 @@ at the end of this file.
 # mypy: ignore-errors
 # pylint: disable=too-many-lines
 from __future__ import annotations
+from PIL import Image
 
 import importlib.util
 import json

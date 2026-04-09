@@ -1,0 +1,331 @@
+2025-10-08 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-09 07:30:02 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-10 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-11 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-12 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-13 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-14 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-15 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-16 07:30:02 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-17 07:30:02 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-18 07:30:02 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-19 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-20 07:30:02 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+2025-10-21 07:30:01 [BMI]
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+Traceback (most recent call last):
+  File "/ebs/scrips/daily_reports/SA_endcustomer.py", line 25, in <module>
+    with open("config.json") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.json'
+\2025-\10-\21 \09:\02:\32 [BMI]
+No alert after login
+No serials found for akenney@brownsmedicalimaging.com → using base dashboard
+Opening dashboard for akenney@brownsmedicalimaging.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for akenney@brownsmedicalimaging.com: /tmp/superset_downloads/system-alert-2025-10-21T09-03-06.608Z.jpg
+Email sent to akenney@brownsmedicalimaging.com
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-21T09-03-41.791Z.jpg
+Email sent to dl-solutions@glassbeam.com
+No alert after login
+No serials found for kate.haker@glassbeam.com → using base dashboard
+Opening dashboard for kate.haker@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for kate.haker@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-21T09-04-19.120Z.jpg
+Email sent to kate.haker@glassbeam.com
+\2025-\10-\21 \09:\06:\58 [BMI]
+2025-10-22 07:30:01 [BMI]
+No alert after login
+No serials found for akenney@brownsmedicalimaging.com → using base dashboard
+Opening dashboard for akenney@brownsmedicalimaging.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for akenney@brownsmedicalimaging.com: /tmp/superset_downloads/system-alert-2025-10-22T07-30-34.852Z.jpg
+Email sent to akenney@brownsmedicalimaging.com
+[Alert after login] Hello from custom.js!
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-22T07-31-06.843Z.jpg
+Email sent to dl-solutions@glassbeam.com
+[Alert after login] Hello from custom.js!
+No serials found for kate.haker@glassbeam.com → using base dashboard
+Opening dashboard for kate.haker@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for kate.haker@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-22T07-31-38.608Z.jpg
+Email sent to kate.haker@glassbeam.com
+2025-10-23 07:30:02 [BMI]
+[Alert after login] Hello from custom.js!
+No serials found for akenney@brownsmedicalimaging.com → using base dashboard
+Opening dashboard for akenney@brownsmedicalimaging.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for akenney@brownsmedicalimaging.com: /tmp/superset_downloads/system-alert-2025-10-23T07-30-32.610Z.jpg
+Email sent to akenney@brownsmedicalimaging.com
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-23T07-31-06.019Z.jpg
+Email sent to dl-solutions@glassbeam.com
+No alert after login
+No serials found for kate.haker@glassbeam.com → using base dashboard
+Opening dashboard for kate.haker@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for kate.haker@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-23T07-31-39.612Z.jpg
+Email sent to kate.haker@glassbeam.com
+2025-10-24 07:30:02 [BMI]
+[Alert after login] Hello from custom.js!
+No serials found for akenney@brownsmedicalimaging.com → using base dashboard
+Opening dashboard for akenney@brownsmedicalimaging.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for akenney@brownsmedicalimaging.com: /tmp/superset_downloads/system-alert-2025-10-24T07-30-33.306Z.jpg
+Email sent to akenney@brownsmedicalimaging.com
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-24T07-31-07.316Z.jpg
+Email sent to dl-solutions@glassbeam.com
+No alert after login
+No serials found for kate.haker@glassbeam.com → using base dashboard
+Opening dashboard for kate.haker@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for kate.haker@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-24T07-31-40.161Z.jpg
+Email sent to kate.haker@glassbeam.com
+2025-10-25 07:30:01 [BMI]
+No alert after login
+No serials found for akenney@brownsmedicalimaging.com → using base dashboard
+Opening dashboard for akenney@brownsmedicalimaging.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for akenney@brownsmedicalimaging.com: /tmp/superset_downloads/system-alert-2025-10-25T07-30-34.121Z.jpg
+Email sent to akenney@brownsmedicalimaging.com
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-25T07-31-08.901Z.jpg
+Email sent to dl-solutions@glassbeam.com
+[Alert after login] Hello from custom.js!
+No serials found for kate.haker@glassbeam.com → using base dashboard
+Opening dashboard for kate.haker@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for kate.haker@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-25T07-31-40.294Z.jpg
+Email sent to kate.haker@glassbeam.com
+2025-10-26 07:30:01 [BMI]
+No alert after login
+No serials found for akenney@brownsmedicalimaging.com → using base dashboard
+Opening dashboard for akenney@brownsmedicalimaging.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for akenney@brownsmedicalimaging.com: /tmp/superset_downloads/system-alert-2025-10-26T07-30-34.858Z.jpg
+Email sent to akenney@brownsmedicalimaging.com
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-26T07-31-08.976Z.jpg
+Email sent to dl-solutions@glassbeam.com
+No alert after login
+No serials found for kate.haker@glassbeam.com → using base dashboard
+Opening dashboard for kate.haker@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for kate.haker@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-26T07-31-43.113Z.jpg
+Email sent to kate.haker@glassbeam.com
+2025-10-27 07:17:34 [MMH]
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=mmh_extracts&bc2r_schema=mmh_mmh_prod_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-18-06.868Z.jpg
+Email sent to dl-solutions@glassbeam.com
+2025-10-27 07:28:02 [MMH]
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=mmh_extracts&bc2r_schema=mmh_mmh_prod_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-28-33.932Z.jpg
+Email sent to dl-solutions@glassbeam.com
+2025-10-27 07:29:01 [MMH]
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=mmh_extracts&bc2r_schema=mmh_mmh_prod_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-29-33.157Z.jpg
+Email sent to dl-solutions@glassbeam.com
+2025-10-27 07:30:01 [BMI]
+2025-10-27 07:30:01 [MMH]
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=mmh_extracts&bc2r_schema=mmh_mmh_prod_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-30-38.515Z.jpg
+Email sent to dl-solutions@glassbeam.com
+No alert after login
+No serials found for akenney@brownsmedicalimaging.com → using base dashboard
+Opening dashboard for akenney@brownsmedicalimaging.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for akenney@brownsmedicalimaging.com: /tmp/superset_downloads/system-alert-2025-10-27T07-30-38.515Z.jpg
+Email sent to akenney@brownsmedicalimaging.com
+2025-10-27 07:31:01 [MMH]
+[Alert after login] Hello from custom.js!
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-31-13.309Z.jpg
+Email sent to dl-solutions@glassbeam.com
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=mmh_extracts&bc2r_schema=mmh_mmh_prod_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-31-33.469Z.jpg
+Email sent to dl-solutions@glassbeam.com
+No alert after login
+No serials found for kate.haker@glassbeam.com → using base dashboard
+Opening dashboard for kate.haker@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=bmi_extracts&bc2r_schema=bmi_bmi_podv11_bc2r
+Dashboard image downloaded for kate.haker@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-31-33.469Z.jpg
+Email sent to kate.haker@glassbeam.com
+2025-10-27 07:32:01 [MMH]
+No alert after login
+No serials found for dl-solutions@glassbeam.com → using base dashboard
+Opening dashboard for dl-solutions@glassbeam.com: https://gbsuperset.glassbeam.com/superset/dashboard/21/?&schema=mmh_extracts&bc2r_schema=mmh_mmh_prod_bc2r
+Dashboard image downloaded for dl-solutions@glassbeam.com: /tmp/superset_downloads/system-alert-2025-10-27T07-32-33.309Z.jpg
+Email sent to dl-solutions@glassbeam.com

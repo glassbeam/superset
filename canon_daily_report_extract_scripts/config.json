@@ -1,0 +1,17 @@
+{
+  "vertica": {
+    "host": "CANON_HOST",
+    "port": PORT,
+    "user": "CANON_USER",
+    "password": "CANON_PASS",
+    "database": "DB_NAME"
+  },
+  "email": {
+    "sender": "SENDER_EMAIL_ADDRESS",
+    "to": ["RECEIVERS_EMAIL_ADDRESS"],
+    "cc": [],
+    "smtp_server": "SMTP_SERVER",
+    "smtp_port": SMTP_PORT,
+    "subject": "Canon Daily Report Extract Failed"
+  }
+}

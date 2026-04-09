@@ -28,7 +28,7 @@ from celery.schedules import crontab
 from flask_caching.backends.filesystemcache import FileSystemCache
 
 logger = logging.getLogger()
-
+#SECRET_KEY="K2WGJjw0MVInRKvw14B4VAfpdo6hH9H5WAe92W0UQGWFVHOTwEHBoHmv"
 DATABASE_DIALECT = os.getenv("DATABASE_DIALECT")
 DATABASE_USER = os.getenv("DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
@@ -41,6 +41,16 @@ EXAMPLES_PASSWORD = os.getenv("EXAMPLES_PASSWORD")
 EXAMPLES_HOST = os.getenv("EXAMPLES_HOST")
 EXAMPLES_PORT = os.getenv("EXAMPLES_PORT")
 EXAMPLES_DB = os.getenv("EXAMPLES_DB")
+
+EMAIL_NOTIFICATIONS = True
+SMTP_HOST = "smtp-server.ec2-east1.glassbeam.com"
+SMTP_STARTTLS = False
+SMTP_USER = ""
+SMTP_PORT = 587
+SMTP_PASSWORD = ""
+SMTP_MAIL_FROM = "donotreply@glassbeam.com"
+EMAIL_REPORTS_FORMAT = "HTML"
+SCREENSHOT_LOCATE_WAIT = 0
 
 # The SQLAlchemy connection string.
 SQLALCHEMY_DATABASE_URI = (
@@ -98,12 +108,47 @@ class CeleryConfig:
 
 CELERY_CONFIG = CeleryConfig
 
-FEATURE_FLAGS = {"ALERT_REPORTS": True}
-ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
+FEATURE_FLAGS = {
+    "ALERT_REPORTS": True,
+    "DASHBOARD_DRILL_TO_DETAIL": True,
+    "HORIZONTAL_FILTER_BAR": True,
+    "ALLOW_JS_XSS": True,
+    "DASHBOARD_VIRTUALIZATION": True,
+    "ASYNC_QUERIES": True,
+    "THUMBNAILS_SQLA_LISTENERS": False,
+    "ENABLE_TEMPLATE_PROCESSING": True,
+    "SQLLAB_BACKEND_PERSISTENCE": True,  # Ensures stateful query execution
+    "DYNAMIC_PLUGINS": True,
+    "SQLLAB_BACKEND_PERSISTENCE": True,
+    "ALERTS_ATTACH_REPORTS": False,
+    "EMAIL_REPORTS_FORMAT": "HTML",
+    "DISABLE_SQL_VALIDATION": True,
+    SCREENSHOT_LOCATE_WAIT : 0
+    }
+
+
+WEBDRIVER_TYPE = "chrome"
+SCREENSHOT_SELENIUM_HEADLESS = True
+WEBDRIVER_OPTION_ARGS = [
+    "--force-device-scale-factor=2.0",
+    "--high-dpi-support=2.0",
+    "--headless",
+    "--disable-gpu",
+    "--disable-dev-shm-usage",
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-extensions",
+]
+ALERT_REPORTS_NOTIFICATION_DRY_RUN = False
 WEBDRIVER_BASEURL = "http://superset:8088/"  # When using docker compose baseurl should be http://superset_app:8088/  # noqa: E501
 # The base URL for the email report hyperlinks.
 WEBDRIVER_BASEURL_USER_FRIENDLY = WEBDRIVER_BASEURL
 SQLLAB_CTAS_NO_LIMIT = True
+
+EMAIL_REPORTS_WEBDRIVER = {
+    "viewport": {"width": 1920, "height": 5000},  # Increase height
+    "wait": 30,  # wait for charts to fully load
+}
 
 log_level_text = os.getenv("SUPERSET_LOG_LEVEL", "INFO")
 LOG_LEVEL = getattr(logging, log_level_text.upper(), logging.INFO)
@@ -133,3 +178,4 @@ try:
     )
 except ImportError:
     logger.info("Using default Docker config...")
+
