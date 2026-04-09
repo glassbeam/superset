@@ -39,18 +39,18 @@ def load_config(config_file):
     with open(config_file) as f:
         return json.load(f)
 
-
 def extract_emails(row):
-    emails = set()
+    emails = []
+    seen = set()
     for col in ["email_to", "email_cc", "email_bcc"]:
         raw = row.get(col)
         if raw:
             for e in raw.replace(";", ",").split(","):
                 e = e.strip()
-                if e:
-                    emails.add(e)
-    return sorted(emails)
-
+                if e and e not in seen:
+                    seen.add(e)
+                    emails.append(e)
+    return emails 
 
 def run_subscriber_extraction(config_file, log_filename, cust_name):
     setup_logging(log_filename)
@@ -81,7 +81,8 @@ def run_subscriber_extraction(config_file, log_filename, cust_name):
                report_definitionfile,
                SchedulerTaskName,
                mps,
-               extracts_schema
+               extracts_schema,
+               dashboard_url
         FROM medicalcommon.email_subscribers
         WHERE report_type = 'Daily Cathlab Report' 
           AND cust_name = '{cust_name}';
@@ -105,6 +106,7 @@ def run_subscriber_extraction(config_file, log_filename, cust_name):
             report_type = row.get("report_type", "")
             mps = row.get("mps", "")
             bc2r_schema = mps.replace("/", "_") + "_bc2r"
+            dashboard_url = row.get("dashboard_url","")
 
             logging.info(
                 "Fetched emails for report %s, MPS %s, cust_name %s: %s",
@@ -118,7 +120,7 @@ def run_subscriber_extraction(config_file, log_filename, cust_name):
                         mps, email, extracts_schema, email_subject, cust_name
                     )
                     subprocess.run(
-                        ["python3", "cathlab_endcustomer.py", email, bc2r_schema, extracts_schema, email_subject, cust_name],
+                        ["python3", "/ebs/scrips/daily_reports/cathlab_endcustomer.py", email, bc2r_schema, extracts_schema, email_subject, cust_name,dashboard_url],
                         check=True
                     )
                 except subprocess.CalledProcessError as e:
@@ -136,8 +138,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     cust_name = sys.argv[1]
-    config_file = "config.json"
-    log_filename = "EmailSubscribers.log"
+    config_file = "/ebs/scrips/daily_reports/config.json"
+    log_filename = "/ebs/scrips/daily_reports/EmailSubscribers.log"
     run_subscriber_extraction(config_file, log_filename, cust_name)
-
-
