@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Daily Report Scheduler - All-in-One
-Includes: Scheduler + Job Insertion Functions
-"""
-
 import os
 import sys
 import json
@@ -19,42 +13,49 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import vertica_python
 from croniter import croniter
 
-CONFIG_PATH = "/ebs/scrips/daily_reports/config.json"
+from credential_manager import get_vertica_config
 
-with open(CONFIG_PATH, "r") as config_file:
-    config = json.load(config_file)
+CONFIG_PATH = "/ebs/scripts/daily_reports/config.json"
 
-VERTICA = config["vertica"]
+try:
+    with open(CONFIG_PATH, "r") as config_file:
+        config = json.load(config_file)
+except FileNotFoundError:
+    print(f"ERROR: Configuration file not found at {CONFIG_PATH}")
+    sys.exit(1)
+except json.JSONDecodeError as e:
+    print(f"ERROR: Invalid JSON in configuration file: {e}")
+    sys.exit(1)
 
-VERTICA_CONFIG = {
-    "host": VERTICA["ums_host"],
-    "port": VERTICA["port"],
-    "user": VERTICA["user"],
-    "password": VERTICA["password"],
-    "database": VERTICA["database"],
-    "autocommit": True
-}
+# Load Vertica credentials from secure path
+try:
+    VERTICA_CONFIG = get_vertica_config(config)
+except Exception as e:
+    print(f"ERROR: Failed to load Vertica credentials: {e}")
+    sys.exit(1)
 
-PATHS = config["paths"]
+PATHS = config.get("paths", {})
+BASE_SCRIPT_PATH = PATHS.get("base_script_path", "/ebs/scripts/daily_reports")
+LOG_FILE = PATHS.get("log_file", "/var/log/daily_reports/scheduler.log")
+LOCK_FILE = PATHS.get("lock_file", "/var/run/daily_reports.lock")
 
-BASE_SCRIPT_PATH = PATHS["base_script_path"]
-LOG_FILE = PATHS["log_file"]
-LOCK_FILE = PATHS["lock_file"]
-
-SCHEDULER = config["scheduler"]
-
-PYTHON_PATH = SCHEDULER["python_path"]
-DEFAULT_TIMEOUT = SCHEDULER["default_timeout_seconds"]
+SCHEDULER = config.get("scheduler", {})
+PYTHON_PATH = SCHEDULER.get("python_path", "/usr/bin/python3")
+DEFAULT_TIMEOUT = SCHEDULER.get("default_timeout_seconds", 3600)
 MAX_WORKERS = SCHEDULER.get("max_parallel_jobs", 5)
 
 SERVER_NAME = socket.gethostname()
 
+VERTICA_CONFIG_SECTION = config.get("vertica", {})
 REPORT_MAPPINGS = {
-    VERTICA["ct_report_type"]: "ct_subscribers.py",
-    VERTICA["mr_report_type"]: "mr_subscribers.py",
-    VERTICA["cathlab_report_type"]: "cathlab_subscribers.py",
-    VERTICA["system_alert_report_type"]: "SA_subscribers.py"
+    VERTICA_CONFIG_SECTION.get("mr_report_type", "Daily MR Report"): "mr_subscribers.py",
+    VERTICA_CONFIG_SECTION.get("ct_report_type", "Daily CT Report"): "ct_subscribers.py",
+    VERTICA_CONFIG_SECTION.get("cathlab_report_type", "Daily CathLab Report"): "cathlab_subscribers.py",
+    VERTICA_CONFIG_SECTION.get("system_alert_report_type", "System Alert Report"): "SA_subscribers.py"
 }
+
+# Ensure log directory exists
+os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 
 logging.basicConfig(
     filename=LOG_FILE,
@@ -65,26 +66,31 @@ logging.basicConfig(
 logging.info("=================================================")
 logging.info("MASTER SCHEDULER STARTED")
 logging.info("=================================================")
+logging.info(f"Server: {SERVER_NAME}")
+logging.info(f"Config: {CONFIG_PATH}")
+logging.info(f"Max Workers: {MAX_WORKERS}")
+logging.info(f"Default Timeout: {DEFAULT_TIMEOUT}s")
 
-lock_file = open(LOCK_FILE, "w")
-
+lock_file = None
 try:
-    fcntl.flock(
-        lock_file,
-        fcntl.LOCK_EX | fcntl.LOCK_NB
-    )
+    lock_file = open(LOCK_FILE, "w")
+    fcntl.flock(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    logging.info("Lock acquired successfully")
 except IOError:
-    logging.warning(
-        "Another Scheduler Instance Already Running"
-    )
+    logging.warning("Another Scheduler Instance Already Running")
     sys.exit(0)
+except Exception as e:
+    logging.error(f"Error acquiring lock: {e}")
+    sys.exit(1)
 
 
 def get_connection():
     """Establish and return a Vertica connection."""
-    return vertica_python.connect(
-        **VERTICA_CONFIG
-    )
+    try:
+        return vertica_python.connect(**VERTICA_CONFIG)
+    except Exception as e:
+        logging.error(f"Failed to establish Vertica connection: {e}")
+        raise
 
 
 def insert_job_history(
@@ -145,9 +151,9 @@ def insert_job_history(
             retry_attempt,
             SERVER_NAME,
             process_id,
-            stdout_log,
-            stderr_log,
-            error_message
+            stdout_log[:10000] if stdout_log else "",  # Truncate to prevent overflow
+            stderr_log[:10000] if stderr_log else "",
+            error_message[:500] if error_message else ""
         )
     )
 
@@ -273,112 +279,69 @@ def insert_jobs_from_list(cursor, connection, jobs_list):
     failed_count = 0
     
     for job in jobs_list:
-        result = insert_new_job(
-            cursor=cursor,
-            connection=connection,
-            job_id=job['job_id'],
-            customer_name=job['customer_name'],
-            report_type=job['report_type'],
-            cron_expression=job['cron_expression'],
-            script_arguments=job['script_arguments'],
-            mps=job['mps'],
-            max_retries=job.get('max_retries', 3)
-        )
-        
-        if result:
-            success_count += 1
-        else:
+        try:
+            success = insert_new_job(
+                cursor=cursor,
+                connection=connection,
+                job_id=job.get("job_id"),
+                customer_name=job.get("customer_name"),
+                report_type=job.get("report_type"),
+                cron_expression=job.get("cron_expression"),
+                script_arguments=job.get("script_arguments"),
+                mps=job.get("mps"),
+                max_retries=job.get("max_retries", 3)
+            )
+            
+            if success:
+                success_count += 1
+            else:
+                failed_count += 1
+        except Exception as e:
+            logging.error(f"Error inserting job: {str(e)}")
             failed_count += 1
     
-    logging.info(f"Job Insertion Summary: {success_count} succeeded, {failed_count} failed")
+    logging.info(f"Job insertion complete: {success_count} succeeded, {failed_count} failed")
     return success_count, failed_count
 
 
 # ============================================================================
-# MAIN SCHEDULER INITIALIZATION
+# FETCH JOBS TO RUN
 # ============================================================================
 
 try:
     master_connection = get_connection()
     master_cursor = master_connection.cursor()
-    logging.info("Connected To Vertica Successfully")
 
-except Exception as e:
-    logging.error(f"Vertica Connection Failed: {str(e)}")
-    sys.exit(1)
-
-# Reset stale running jobs (jobs that have been running for > 2 hours)
-try:
-    RESET_QUERY = """
-    UPDATE medicalcommon.dailyreport_scheduler_config_test
-    SET
-        is_running = FALSE,
-        updated_at = CURRENT_TIMESTAMP
-    WHERE is_running = TRUE
-    AND started_at < CURRENT_TIMESTAMP - INTERVAL '2 HOURS'
-    """
-
-    master_cursor.execute(RESET_QUERY)
-    master_connection.commit()
-    logging.info("Reset Stale Running Jobs Successfully")
-
-except Exception as e:
-    logging.error(f"Failed Resetting Stale Jobs: {str(e)}")
-
-
-# ============================================================================
-# FETCH ACTIVE JOBS DUE FOR EXECUTION
-# ============================================================================
-
-FETCH_QUERY = """
-SELECT
-    job_id,
-    customer_name,
-    report_type,
-    cron_expression,
-    script_arguments,
-    retry_count,
-    max_retries,
-    next_run_time
-FROM medicalcommon.dailyreport_scheduler_config_test
-WHERE status = 'ACTIVE'
-AND is_running = FALSE
-AND mps NOT IN (
-    SELECT DISTINCT mps
-    FROM operational_extract.exclude_mps_bdls
-)
-"""
-
-master_cursor.execute(FETCH_QUERY)
-all_jobs = master_cursor.fetchall()
-
-jobs = []
-current_time = datetime.now()
-
-# Filter jobs that are due for execution
-for job in all_jobs:
-    (
+    FETCH_JOBS_QUERY = """
+    SELECT
         job_id,
         customer_name,
         report_type,
         cron_expression,
         script_arguments,
-        retry_count,
+        status,
         max_retries,
-        next_run_time
-    ) = job
+        retry_count,
+        is_running,
+        last_run_status,
+        mps
+    FROM medicalcommon.dailyreport_scheduler_config_test
+    WHERE status = 'ACTIVE'
+      AND next_run_time <= CURRENT_TIMESTAMP
+      AND is_running = FALSE
+    ORDER BY next_run_time ASC
+    LIMIT 100;
+    """
 
-    try:
-        # Execute if next_run_time is NULL or has passed
-        if next_run_time is None or next_run_time <= current_time:
-            jobs.append(job)
+    master_cursor.execute(FETCH_JOBS_QUERY)
+    columns = [desc[0] for desc in master_cursor.description]
+    jobs = [dict(zip(columns, row)) for row in master_cursor.fetchall()]
 
-    except Exception as e:
-        logging.error(
-            f"Failed checking schedule for Job {job_id}: {str(e)}"
-        )
+    logging.info(f"Fetched {len(jobs)} jobs to execute")
 
-logging.info(f"Total Runnable Jobs Found: {len(jobs)}")
+except Exception as e:
+    logging.error(f"Failed to fetch jobs: {str(e)}")
+    jobs = []
 
 
 # ============================================================================
@@ -386,54 +349,53 @@ logging.info(f"Total Runnable Jobs Found: {len(jobs)}")
 # ============================================================================
 
 def execute_job(job):
-    """
-    Execute a single scheduled job.
-    
-    Args:
-        job: Tuple containing job details from database
-    """
-    (
-        job_id,
-        customer_name,
-        report_type,
-        cron_expression,
-        script_arguments,
-        retry_count,
-        max_retries,
-        next_run_time
-    ) = job
+    """Execute a single job in a thread."""
+    job_id = job["job_id"]
+    customer_name = job["customer_name"]
+    report_type = job["report_type"]
+    cron_expression = job["cron_expression"]
+    script_arguments = job["script_arguments"]
+    retry_count = job["retry_count"]
+    max_retries = job["max_retries"]
 
     connection = None
     cursor = None
     process = None
-    stdout = ""
-    stderr = ""
     start_time = None
     end_time = None
     duration = 0
     process_id = None
+    stdout = ""
+    stderr = ""
 
     try:
-        logging.info(f"Starting Job: {customer_name} (Job ID: {job_id})")
-
         # Check if max retries exceeded
         if retry_count >= max_retries:
-            logging.warning(
-                f"Max Retries Exceeded for Job {job_id}: {customer_name}"
-            )
+            logging.warning(f"Job {job_id} exceeded max retries ({max_retries})")
+            connection = get_connection()
+            cursor = connection.cursor()
+            
+            UPDATE_EXHAUSTED_QUERY = """
+            UPDATE medicalcommon.dailyreport_scheduler_config_test
+            SET
+                status = 'DISABLED',
+                last_run_status = 'MAX_RETRIES_EXCEEDED',
+                last_error_message = 'Job exceeded maximum retry attempts',
+                is_running = FALSE,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE job_id = %s
+            """
+            cursor.execute(UPDATE_EXHAUSTED_QUERY, (job_id,))
+            connection.commit()
             return
 
-        # Validate report type exists
-        if report_type not in REPORT_MAPPINGS:
-            raise Exception(f"Invalid Report Type: {report_type}")
-
         # Get script path
-        script_name = REPORT_MAPPINGS[report_type]
-        script_full_path = os.path.join(BASE_SCRIPT_PATH, script_name)
+        script_name = REPORT_MAPPINGS.get(report_type)
+        if not script_name:
+            logging.error(f"Unknown report type for job {job_id}: {report_type}")
+            return
 
-        # Validate script exists
-        if not os.path.exists(script_full_path):
-            raise Exception(f"Script Not Found: {script_full_path}")
+        script_full_path = os.path.join(BASE_SCRIPT_PATH, script_name)
 
         # Establish connection for job
         connection = get_connection()
@@ -468,7 +430,8 @@ def execute_job(job):
             command,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True
+            text=True,
+            cwd=BASE_SCRIPT_PATH
         )
 
         try:
@@ -671,7 +634,6 @@ def execute_job(job):
             logging.error(f"Error during cleanup: {str(cleanup_error)}")
 
 
-
 # ============================================================================
 # MAIN EXECUTION WITH THREAD POOL
 # ============================================================================
@@ -698,11 +660,21 @@ else:
 # ============================================================================
 
 try:
-    master_cursor.close()
-    master_connection.close()
+    if master_cursor:
+        master_cursor.close()
+    if master_connection:
+        master_connection.close()
 
 except Exception as e:
     logging.error(f"Error closing master connection: {str(e)}")
 
 logging.info("MASTER SCHEDULER COMPLETED SUCCESSFULLY")
 logging.info("=================================================")
+
+# Release lock
+if lock_file:
+    try:
+        fcntl.flock(lock_file, fcntl.LOCK_UN)
+        lock_file.close()
+    except Exception:
+        pass
