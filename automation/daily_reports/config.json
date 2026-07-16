@@ -1,0 +1,45 @@
+{
+   "superset": {
+    "login_url": "https://gbreports.glassbeam.com/login/",
+    "ct_dashboard_base_url": "https://gbreports.glassbeam.com/superset/dashboard/14/",
+    "mr_dashboard_base_url": "https://gbreports.glassbeam.com/superset/dashboard/15/",
+    "cathlab_dashboard_base_url": "https://gbreports.glassbeam.com/superset/dashboard/16/",
+    "system_alert_dashboard_url": "https://gbreports.glassbeam.com/superset/dashboard/21/",
+    "credentials_path": "{SUPERSET_CREDENTIALS_PATH}"
+  },
+  "chrome": {
+    "driver_path": "/usr/local/bin/chromedriver",
+    "download_dir": "/tmp/report_downloads",
+    "loginserver": "https://glassbeam.glassbeam.com"
+  },
+  "email": {
+    "sender": "{EMAIL_SENDER}",
+    "smtp_server": "{SMTP_SERVER}",
+    "error_to": "{ERROR_EMAIL}",
+    "smtp_port": "{SMTP_PORT}",
+    "cc": "{CC_EMAIL}",
+    "bcc": "{BCC_EMAIL}"
+  },
+ "vertica": {
+    "credentials_path": "{VERTICA_CREDENTIALS_PATH}",
+    "ums_host": "{VERTICA_HOST}",
+    "port": "{VERTICA_PORT}",
+    "database": "{VERTICA_DATABASE}",
+    "ct_report_type": "Daily CT Report",
+    "mr_report_type": "Daily MRI Report",
+    "cathlab_report_type": "Daily Cathlab Report",
+    "system_alert_report_type": "Daily System Alert Report"
+  },
+  "paths": {
+    "base_script_path": "/ebs/scrips/daily_reports",
+    "log_file": "/ebs/scrips/daily_reports/logs/scheduler.log",
+    "lock_file": "/ebs/scrips/daily_reports/.scheduler.lock"
+  },
+  "scheduler": {
+    "python_path": "/usr/bin/python3",
+    "default_timeout_seconds": 3600,
+    "max_parallel_jobs": 5
+}
+}
+
+
