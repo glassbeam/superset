@@ -172,7 +172,7 @@ def get_serials_for_email(conn,email, extracts_schema):
         FROM {extracts_schema}.endcustomer_serial_mapping
         WHERE ',' || sub_group_name || ',' ILIKE (
             SELECT DISTINCT '%,' || end_customer || ',%'
-            FROM ums.user
+            FROM medicalcommon.user
             WHERE email ILIKE '{email}'
             LIMIT 1
         );
